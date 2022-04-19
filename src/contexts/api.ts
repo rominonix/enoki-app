@@ -3,7 +3,7 @@ import axios from "axios";
 import { User } from "./types";
 
 const HOST = Platform.OS === "ios" ? "localhost" : "10.0.2.2";
-const API = axios.create({ baseURL: `http://${HOST}:3000/api/users` });
+const API = axios.create({ baseURL: `http://${HOST}:3000/api/` });
 
 export const login = async (email: string, password: string) => {
   try {
@@ -11,12 +11,15 @@ export const login = async (email: string, password: string) => {
       email,
       password,
     });
+    console.log("holi", response.data.user);
 
     return {
       user: response.data.user,
       token: response.data.token,
     };
   } catch (error) {
+    console.log(error);
+
     return false;
   }
 };
@@ -32,4 +35,3 @@ export const register = async (user: User) => {
     console.log(error);
   }
 };
-
