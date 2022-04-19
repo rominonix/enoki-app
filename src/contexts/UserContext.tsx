@@ -10,19 +10,22 @@ export const UserContext = React.createContext<UserContextInterface | null>(
 const UserContextProvider: React.FC = (props) => {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
+  
   const login = async (email: string, password: string) => {
     try {
       const response = await API.login(email, password);
+      console.log("res from contexts", response);
 
-      if (response) {
-        setUser(response.user);
+      // if (response) {
+      //   setUser(response.user);
+        
+      //   setToken(response.token);
 
-        setToken(response.token);
-
-        await AsyncStorage.setItem("token", response.token);
-      } else {
-      }
-    } catch (error) {}
+      //   await AsyncStorage.setItem("token", response.token);
+      // } 
+    } catch (error) {
+      console.log(error);  
+    }
   };
 
   const userContext: UserContextInterface = {
