@@ -1,5 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+// import LoginStack from "./src/navigators/loginStack";
+import AuthNavigator from "./src/navigators/AuthNavigator";
+
 import UserContextProvider from "./src/contexts/UserContext";
 import {
   SafeAreaProvider,
@@ -10,10 +14,12 @@ import Login from "./src/screens/login/Login";
 export default function App() {
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+      <NavigationContainer>
       <UserContextProvider>
-        <Login />
-        <StatusBar style="auto" />
+        <AuthNavigator />
+        {/* <StatusBar style="auto" /> */}
       </UserContextProvider>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
