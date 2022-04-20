@@ -39,10 +39,21 @@ const UserContextProvider: React.FC = (props) => {
     }
   };
 
+  const passwordReset = async (email: string) => {
+    try {
+      const response = await API.passwordReset(email);
+      console.log(response);
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const userContext: UserContextInterface = {
     user,
     login,
     register,
+    passwordReset
   };
 
   return (
