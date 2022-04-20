@@ -35,3 +35,12 @@ export const register = async (user: User) => {
     console.log(error);
   }
 };
+
+export const passwordReset = async (email: string) => {
+  const response = await API.post("/passwordreset", { email });
+  console.log(response);
+  
+  return response;
+};
+
+

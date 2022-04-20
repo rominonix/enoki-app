@@ -31,6 +31,11 @@ const Login: React.FC = () => {
     navigation.navigate("Create account");
   };
 
+  const handleResetPassword = () => {
+    //@ts-ignore
+    navigation.navigate("Password reset");
+  };
+
   return (
     <SafeAreaView style={globalStyle.container}>
       <View>
@@ -49,6 +54,10 @@ const Login: React.FC = () => {
 
         <Pressable style={globalStyle.buttonLogin} onPress={handleLogin}>
           <Text style={{ textAlign: "center" }}>Login</Text>
+        </Pressable>
+
+        <Pressable onPress={handleResetPassword}>
+          <Text style={{ textAlign: "center" }}>Reset password</Text>
         </Pressable>
 
         <Pressable style={globalStyle.buttonLogin} onPress={handleCreateAccount}>
