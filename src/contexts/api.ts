@@ -5,6 +5,16 @@ import { User } from "./types";
 const HOST = Platform.OS === "ios" ? "localhost" : "10.0.2.2";
 const API = axios.create({ baseURL: `http://${HOST}:3000/api/` });
 
+export const getUser = async (token: string) => {
+  const response = await API.get("/", {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+
+  return response;
+};
+
 export const login = async (email: string, password: string) => {
   try {
     const response = await API.post("/login", {

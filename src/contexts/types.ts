@@ -3,6 +3,8 @@ export interface UserContextInterface {
   login: (email: string, password: string) => Promise<void>;
   register: (user: User) => Promise<boolean>;
   passwordReset: (email: string) => Promise<void>;
+  getStorageData: () => void;
+
 
 }
 

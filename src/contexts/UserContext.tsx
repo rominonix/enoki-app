@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { User, UserContextInterface } from "./types";
+import { Alert} from "react-native"
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as API from "./api";
 
@@ -16,13 +17,13 @@ const UserContextProvider: React.FC = (props) => {
       const response = await API.login(email, password);
       console.log("res from contexts", response);
 
-      // if (response) {
-      //   setUser(response.user);
+      if (response) {
+        setUser(response.user);
 
-      //   setToken(response.token);
+        setToken(response.token);
 
-      //   await AsyncStorage.setItem("token", response.token);
-      // }
+        await AsyncStorage.setItem("token", response.token);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -49,12 +50,41 @@ const UserContextProvider: React.FC = (props) => {
     }
   };
 
+  const getStorageData = async () => {
+    try {
+      let userToken = await AsyncStorage.getItem("token");
+
+      if (userToken) {
+        const response = await API.getUser(userToken);
+
+        if (response.data.message === "Unauthorized") {
+          Alert.alert("User unauthorized", "Try again", [
+            {
+              text: "Cancel",
+              onPress: () => console.log("Cancel Pressed"),
+              style: "cancel",
+            },
+            { text: "OK", onPress: () => console.log("OK Pressed") },
+          ]);
+        } else {
+          setUser(response.data.users);
+          setToken(userToken);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const userContext: UserContextInterface = {
     user,
     login,
     register,
-    passwordReset
+    passwordReset,
+    getStorageData
   };
+
+
 
   return (
     <UserContext.Provider value={userContext}>

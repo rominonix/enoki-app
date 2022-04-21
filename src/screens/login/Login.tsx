@@ -14,7 +14,7 @@ import globalStyle from "../../styles/styles"
 
 const Login: React.FC = () => {
   const navigation = useNavigation();
-  const { login } = useContext(UserContext)!;
+  const { login, getStorageData } = useContext(UserContext)!;
   const [loginIn, setLoginIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +35,10 @@ const Login: React.FC = () => {
     //@ts-ignore
     navigation.navigate("Password reset");
   };
+
+  useEffect(() => {
+    getStorageData();
+  }, []);
 
   return (
     <SafeAreaView style={globalStyle.container}>
