@@ -1,15 +1,14 @@
 import { useContext } from "react";
-// import { UserContext } from "../contexts/user/UserContext";
+import { UserContext } from "../contexts/UserContext";
 import LoginStack from "./LoginStack";
-// import MainTabNavigator from "./MainTabs";
-// import SelectCategories from "../screens/onboarding/categories/Categories";
+import MainTabNavigator from "./MainTabNavigator";
 
 const AuthNavigator: React.FC = () => {
-//   const { user, userOnboarded } = useContext(UserContext)!;
+  const { user } = useContext(UserContext)!;
 
-  return  (
-    <LoginStack />
-  );
+    return !user ? (
+      <LoginStack />) :  (
+      <MainTabNavigator />) 
 };
 
 export default AuthNavigator;
