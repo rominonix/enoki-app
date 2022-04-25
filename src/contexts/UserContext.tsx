@@ -15,7 +15,7 @@ const UserContextProvider: React.FC = (props) => {
   const login = async (email: string, password: string) => {
     try {
       const response = await API.login(email, password);
-      console.log("res from contexts", response);
+      // console.log("res from contexts", response);
 
       if (response) {
         setUser(response.user);
@@ -76,12 +76,19 @@ const UserContextProvider: React.FC = (props) => {
     }
   };
 
+  const logout = async () => {
+    await AsyncStorage.removeItem("token");
+    setUser(null);
+    setToken(null);
+  };
+
   const userContext: UserContextInterface = {
     user,
     login,
     register,
     passwordReset,
-    getStorageData
+    getStorageData,
+    logout
   };
 
 

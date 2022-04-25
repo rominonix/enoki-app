@@ -6,13 +6,15 @@ const HOST = Platform.OS === "ios" ? "localhost" : "10.0.2.2";
 const API = axios.create({ baseURL: `http://${HOST}:3000/api/` });
 
 export const getUser = async (token: string) => {
-  const response = await API.get("/", {
+  const response = await API.get("/me", {
     headers: {
       authorization: `Bearer ${token}`,
     },
   });
-
+  console.log("USUARIO", response);
+  
   return response;
+  
 };
 
 export const login = async (email: string, password: string) => {
@@ -21,7 +23,7 @@ export const login = async (email: string, password: string) => {
       email,
       password,
     });
-    console.log("holi", response.data.user);
+    // console.log("holi", response.data.user);
 
     return {
       user: response.data.user,

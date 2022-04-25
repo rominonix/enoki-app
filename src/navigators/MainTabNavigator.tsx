@@ -1,4 +1,4 @@
-import { Dimensions, Platform } from "react-native";
+// import { Dimensions, Platform } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeStack from "../navigators/HomeStack";
 import Album from "../screens/Album";
@@ -10,33 +10,33 @@ import {
   AlbumIcon,
   QuizIcon,
   CameraIcon,
-  ProfileIcon
+  ProfileIcon,
 } from "../components/Icons";
 
 const Tab = createBottomTabNavigator();
 
 const MainTabNavigator = () => {
-  const extraTabBarPadding =
-    Platform.OS === "ios" && Dimensions.get("screen").height > 800;
+//   const extraTabBarPadding =
+//     Platform.OS === "ios" && Dimensions.get("screen").height > 800;
 
   return (
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarActiveTintColor: "#F1FFE0",
-        tabBarInactiveTintColor: "black",
+        tabBarActiveTintColor: "black",
+        tabBarInactiveTintColor: "#F1FFE0",
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: true,
+        
         tabBarIconStyle: {
           padding: 0,
         },
         tabBarStyle: {
           backgroundColor: "#B3E96F",
-          borderTopLeftRadius: 15,
-          borderTopRightRadius: 15,
-          paddingBottom: extraTabBarPadding ? 22 : 10,
-          height: extraTabBarPadding ? 75 : 65,
+          paddingBottom: 8,
+          paddingTop: 8,
+          height: 50,
           overflow: "hidden",
           position: "absolute",
           bottom: 0,
@@ -45,21 +45,21 @@ const MainTabNavigator = () => {
         },
         tabBarIcon: ({ size, color }) => {
           if (route.name === "Home") {
-            return <HomeIcon size={25} color={color} />;
+            return <HomeIcon size={20} color={color} />;
           }
           if (route.name === "Album") {
-            return <AlbumIcon size={28} color={color} />;
+            return <AlbumIcon size={24} color={color} />;
           }
           if (route.name === "New foto") {
-            return <CameraIcon size={27} color={color} />;
+            return <CameraIcon size={24} color={color} />;
           }
 
           if (route.name === "Game") {
-            return <QuizIcon size={24} color={color} />;
+            return <QuizIcon size={20} color={color} />;
           }
 
           if (route.name === "Profile") {
-            return <ProfileIcon size={24} color={color} />;
+            return <ProfileIcon size={22} color={color} />;
           }
           return null;
         },

@@ -3,11 +3,10 @@ import React, { useContext } from "react";
 import { Text, View } from "react-native";
 import globalStyles from "../../styles/styles";
 
-const Home: React.FC = () => {
+const HomeScreen: React.FC = () => {
 
   return (
     <>
-      {/* <Header home /> */}
       <View style={[globalStyles.container]}>
           <Text>HOMIS</Text>
       </View>
@@ -15,4 +14,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default HomeScreen 
