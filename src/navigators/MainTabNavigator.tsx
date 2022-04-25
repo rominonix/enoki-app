@@ -1,6 +1,7 @@
 // import { Dimensions, Platform } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeStack from "../navigators/HomeStack";
+// import HomeStack from "../navigators/HomeStack";
+import Home from "../screens/homeScreen/HomeScreen"
 import Album from "../screens/Album";
 import NewFoto from "../screens/NewFoto";
 import Game from "../screens/Game";
@@ -65,7 +66,7 @@ const MainTabNavigator = () => {
         },
       })}
     >
-      <Tab.Screen name="Home" component={HomeStack} />
+      <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Album" component={Album} />
       <Tab.Screen name="New foto" component={NewFoto} />
       <Tab.Screen name="Game" component={Game} />

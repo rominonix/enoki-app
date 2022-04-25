@@ -15,7 +15,7 @@ export default StyleSheet.create({
         paddingVertical: 15,
         borderRadius: 3,
       },
-      buttonLogin: {
+      button: {
         width: 200,
         borderRadius: 3,
         marginTop: 20,

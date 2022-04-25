@@ -2,7 +2,9 @@ import { Platform } from "react-native";
 import axios from "axios";
 import { User } from "./types";
 
-const HOST = Platform.OS === "ios" ? "localhost" : "10.0.2.2";
+// const HOST = Platform.OS === "ios" ? "localhost" : "10.0.2.2";
+const HOST = "192.168.1.154";
+
 const API = axios.create({ baseURL: `http://${HOST}:3000/api/` });
 
 export const getUser = async (token: string) => {
@@ -11,11 +13,20 @@ export const getUser = async (token: string) => {
       authorization: `Bearer ${token}`,
     },
   });
-  console.log("USUARIO", response);
   
   return response;
   
 };
+
+// export const getUser = async (token: string) => {
+//   const response = await API.get("/", {
+//     headers: {
+//       authorization: `Bearer ${token}`,
+//     },
+//   });
+
+//   return response;
+// };
 
 export const login = async (email: string, password: string) => {
   try {
@@ -23,7 +34,7 @@ export const login = async (email: string, password: string) => {
       email,
       password,
     });
-    // console.log("holi", response.data.user);
+    console.log("holi", response.data.user);
 
     return {
       user: response.data.user,

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Home from '../screens/home/HomeScreen';
+import Home from '../screens/homeScreen/HomeScreen';
 import Album from '../screens/Album';
 import NewFoto from '../screens/NewFoto';
 import { createStackNavigator } from "@react-navigation/stack";
