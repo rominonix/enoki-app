@@ -4,8 +4,7 @@ export interface UserContextInterface {
   register: (user: User) => Promise<boolean>;
   passwordReset: (email: string) => Promise<void>;
   getStorageData: () => void;
-
-
+  logout: () => void
 }
 
 export interface User {

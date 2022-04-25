@@ -6,7 +6,6 @@ const Album: React.FC = () => {
 
   return (
     <>
-      {/* <Header home /> */}
       <View style={[globalStyles.container]}>
           <Text>FOTO SAMLING</Text>
       </View>

@@ -14,8 +14,8 @@ const HomeStack = () => {
     screenOptions={{headerShown:false}}
     initialRouteName="Home">
     <Stack.Screen name="Home" component={Home} />
-    <Stack.Screen name="Album" component={Album} />
-    <Stack.Screen name="New foto" component={NewFoto} />
+    {/* <Stack.Screen name="Album" component={Album} />
+    <Stack.Screen name="New foto" component={NewFoto} /> */}
 
   </Stack.Navigator>
   )

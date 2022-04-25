@@ -2,11 +2,7 @@ import { Text, TextInput, View, Pressable, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-// import Logo from "../../components/Logo";
-// import Button from "../../components/Button";
 import globalStyles from "../../styles/styles";
-// import { SafeAreaView } from "react-native-safe-area-context";
-// import styles from "./styles";
 
 const ResetPassword: React.FC = () => {
   const { passwordReset } = useContext(UserContext)!;
@@ -15,7 +11,6 @@ const ResetPassword: React.FC = () => {
 
   const controllEmail = () => {
     passwordReset(email);
-    
   };
 
   const sendEmail = () => {
