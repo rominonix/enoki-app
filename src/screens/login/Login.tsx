@@ -11,6 +11,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { UserContext } from "../../contexts/UserContext";
 import globalStyle from "../../styles/styles"
+import { TouchableOpacity } from 'react-native';
 
 const Login: React.FC = () => {
   const navigation = useNavigation();
@@ -56,15 +57,15 @@ const Login: React.FC = () => {
           autoCapitalize="none"
         />
 
-        <Pressable style={globalStyle.buttonLogin} onPress={handleLogin}>
+        <TouchableOpacity style={globalStyle.button} onPress={handleLogin}>
           <Text style={{ textAlign: "center" }}>Login</Text>
-        </Pressable>
+        </TouchableOpacity>
 
         <Pressable onPress={handleResetPassword}>
           <Text style={{ textAlign: "center" }}>Reset password</Text>
         </Pressable>
 
-        <Pressable style={globalStyle.buttonLogin} onPress={handleCreateAccount}>
+        <Pressable style={globalStyle.button} onPress={handleCreateAccount}>
           <Text style={{ textAlign: "center" }}>Create account</Text>
         </Pressable>
       </View>

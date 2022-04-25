@@ -4,11 +4,11 @@ import LoginStack from "./LoginStack";
 import MainTabNavigator from "./MainTabNavigator";
 
 const AuthNavigator: React.FC = () => {
-  const { user } = useContext(UserContext)!;
+  const { user} = useContext(UserContext)!;
 
     return !user ? (
-      <LoginStack />) :  (
-      <MainTabNavigator />) 
-};
+      <LoginStack />) : (
+      <MainTabNavigator />)
+} ;
 
 export default AuthNavigator;

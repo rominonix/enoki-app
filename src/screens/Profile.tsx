@@ -4,10 +4,12 @@ import globalStyles from "../styles/styles";
 import { UserContext } from "../contexts/UserContext";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import globalStyle from "../styles/styles"
 
 const Profile: React.FC = () => {
-  const { logout, getStorageData } = useContext(UserContext)!;
-  const navigation = useNavigation()
+  const { logout } = useContext(UserContext)!;
+  // const navigation = useNavigation()
 
   // console.log("profile", getStorageData());
   
@@ -17,7 +19,8 @@ const Profile: React.FC = () => {
 
   // }, []);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+  // await AsyncStorage.removeItem("token")
     logout()
   //@ts-ignore
     // navigation.navigate("Login");
@@ -27,9 +30,10 @@ const Profile: React.FC = () => {
     <>
       <View style={[globalStyles.container]}>
         <Text>PROFILE</Text>
-        <Pressable onPress={handleLogout}>
-          <Text>Log out</Text>
-        </Pressable>
+
+        <TouchableOpacity onPress={handleLogout} style={globalStyle.button}>
+          <Text style={{ textAlign: "center" }}>Logout</Text>
+        </TouchableOpacity>
       </View>
     </>
   );

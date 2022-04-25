@@ -1,6 +1,6 @@
 
 import React, { useContext } from "react";
-import { Text, View } from "react-native";
+import { Pressable, Text, View, TouchableOpacity } from 'react-native';
 import globalStyles from "../../styles/styles";
 
 const HomeScreen: React.FC = () => {
@@ -9,6 +9,13 @@ const HomeScreen: React.FC = () => {
     <>
       <View style={[globalStyles.container]}>
           <Text>HOMIS</Text>
+
+          <Pressable>
+            <Text>akakakka</Text>
+          </Pressable>
+          <TouchableOpacity>
+            <Text>blablablablalaba</Text>
+          </TouchableOpacity>
       </View>
     </>
   );

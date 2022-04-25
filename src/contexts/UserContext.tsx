@@ -15,13 +15,11 @@ const UserContextProvider: React.FC = (props) => {
   const login = async (email: string, password: string) => {
     try {
       const response = await API.login(email, password);
-      // console.log("res from contexts", response);
-
+      console.log("HOli response", response);
+      
       if (response) {
         setUser(response.user);
-
         setToken(response.token);
-
         await AsyncStorage.setItem("token", response.token);
       }
     } catch (error) {
@@ -53,9 +51,10 @@ const UserContextProvider: React.FC = (props) => {
   const getStorageData = async () => {
     try {
       let userToken = await AsyncStorage.getItem("token");
-
       if (userToken) {
         const response = await API.getUser(userToken);
+        console.log("getDatarespone", response);
+        
 
         if (response.data.message === "Unauthorized") {
           Alert.alert("User unauthorized", "Try again", [
@@ -84,6 +83,7 @@ const UserContextProvider: React.FC = (props) => {
 
   const userContext: UserContextInterface = {
     user,
+    token,
     login,
     register,
     passwordReset,
