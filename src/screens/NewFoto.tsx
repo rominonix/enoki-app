@@ -1,7 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Text, View, TouchableOpacity, Button, Image } from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Button,
+  Image,
+  Platform,
+} from "react-native";
 import globalStyles from "../styles/styles";
 import * as ImagePicker from "expo-image-picker";
+import axios from 'axios';
+
+interface imageData {
+  name: string;
+}
 
 const NewFoto: React.FC = () => {
   const [image, setImage] = useState(null);
@@ -12,7 +24,7 @@ const NewFoto: React.FC = () => {
     });
     ImagePicker.requestCameraPermissionsAsync().then((response) => {
       console.log(response);
-    })
+    });
   }, []);
 
   const pickImage = async () => {
@@ -33,42 +45,47 @@ const NewFoto: React.FC = () => {
     }
   };
 
-    const takePhoto = async () => {
-      const result = await ImagePicker.launchCameraAsync({presentationStyle: 0})
-      // const permissionResult = await ImagePicker.requestCameraPermissionsAsync();
-      // if (permissionResult.granted === false) {
-      //    alert("You've refused to allow this appp to access your camera!");
-      //    return;
-      // }
+  const takePhoto = async () => {
+    const result = await ImagePicker.launchCameraAsync({
+      presentationStyle: 0,
+    });
+    if (!result.cancelled) {
+      //@ts-ignore
+      setImage(result.uri);
+    }
+  };
 
-      // const result = await ImagePicker.launchCameraAsync();
-      // if (!result.cancelled) {
-      //   //@ts-ignore
-      //    setImage(result)
-      // }
+  const uploadImg = async () => {
+    const formData = new FormData();
+    formData.append("image", {
+      //@ts-ignore
+      name: "randon.jpg",
+      type: "image/*",
+      //@ts-ignore
+      uri: image.uri
+       
+    });
 
-      if (!result.cancelled) {
-        //@ts-ignore
-        setImage(result.uri);
-      }
-   }
+    console.log(formData);
+    
+    const response = await axios.post(
+      "http://192.168.1.154:3000/api/image", 
+      formData
+    )
+    console.log(response.status, response.data);
+    
+  };
 
   return (
     <>
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Button
-          title="Pick an image from camera roll"
-          onPress={pickImage}
-        />
-        <Button
-          title="Camera"
-           onPress={takePhoto}
-        />
+        <Button title="Pick an image from camera roll" onPress={pickImage} />
+        <Button title="Camera" onPress={takePhoto} />
         {image && (
-          <Image 
-          source={{ uri: image }} 
-          style={{ width: 350, height: 350 }} />
+          <Image source={{ uri: image }} style={{ width: 350, height: 350 }} />
         )}
+
+        <Button title="Spara" onPress={uploadImg} />
       </View>
       {/* <View style={[globalStyles.container]}>
         <Text>NEW FOTO</Text>

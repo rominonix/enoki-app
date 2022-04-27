@@ -23,4 +23,16 @@ export default StyleSheet.create({
         padding: 15,
         backgroundColor: "#B3E96F",
       },
+      imgContainerHome: {
+        width: 350,
+        height: 450,
+        backgroundColor: "white",
+        // marginHorizontal: 40, 
+        marginVertical: 10
+        // paddingVertical: 30
+      }, 
+      imgHome: {
+        width: 350,
+        height: 450,
+      }
 })

@@ -1,24 +1,40 @@
-
 import React, { useContext } from "react";
-import { Pressable, Text, View, TouchableOpacity } from 'react-native';
+import {
+  Pressable,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+} from "react-native";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import globalStyles from "../../styles/styles";
+//@ts-ignore
+import Photo from "../../../assets/adaptive-icon.png";
 
 const HomeScreen: React.FC = () => {
-
   return (
     <>
+      {/* <SafeAreaView> */}
+      {/* <ScrollView > */}
       <View style={[globalStyles.container]}>
-          <Text>HOMIS</Text>
+        <View style={globalStyles.imgContainerHome}>
+          <Image style={globalStyles.imgHome} source={Photo} />
+        </View>
+        <View>
+          <Text>Latinska Namn</Text>
+          <Text>Svamp Namn</Text>
+          <Text>Beskrivning</Text>
+        </View>
 
-          <Pressable>
-            <Text>akakakka</Text>
-          </Pressable>
-          <TouchableOpacity>
-            <Text>blablablablalaba</Text>
-          </TouchableOpacity>
+        {/* <TouchableOpacity style={globalStyles.button}>
+            <Text style={{textAlign: "center"}}>Next</Text>
+          </TouchableOpacity> */}
       </View>
+      {/* </ScrollView> */}
+      {/* </SafeAreaView> */}
     </>
   );
 };
 
-export default HomeScreen 
+export default HomeScreen;
