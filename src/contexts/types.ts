@@ -5,11 +5,12 @@ export interface UserContextInterface {
   register: (user: User) => Promise<boolean>;
   passwordReset: (email: string) => Promise<void>;
   getStorageData: () => void;
-  logout: () => void
+  logout: () => void;
+  newImage: (name: string, description:string) => void;
 }
 
 export interface User {
-  id?: string;
+  id: string;
   name: string;
   password: string;
   email: string;

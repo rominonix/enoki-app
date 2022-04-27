@@ -1,6 +1,7 @@
 import { Platform } from "react-native";
 import axios from "axios";
 import { User } from "./types";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // const HOST = Platform.OS === "ios" ? "localhost" : "10.0.2.2";
 const HOST = "192.168.1.154";
@@ -13,20 +14,9 @@ export const getUser = async (token: string) => {
       authorization: `Bearer ${token}`,
     },
   });
-  
+
   return response;
-  
 };
-
-// export const getUser = async (token: string) => {
-//   const response = await API.get("/", {
-//     headers: {
-//       authorization: `Bearer ${token}`,
-//     },
-//   });
-
-//   return response;
-// };
 
 export const login = async (email: string, password: string) => {
   try {
@@ -34,8 +24,7 @@ export const login = async (email: string, password: string) => {
       email,
       password,
     });
-    console.log("holi", response.data.user);
-
+   
     return {
       user: response.data.user,
       token: response.data.token,
@@ -61,9 +50,32 @@ export const register = async (user: User) => {
 
 export const passwordReset = async (email: string) => {
   const response = await API.post("/passwordreset", { email });
-  console.log(response);
   
   return response;
 };
 
+export const addNewImage = async (
+  name: string,
+  description: string,
+  user: User
+) => {
+  let token = await AsyncStorage.getItem("token");
+ 
+  let id = user;
+  let url = `/${user}/image`
 
+  try {
+    const response = await API.post(url, {
+      userId: id,
+      name,
+      description,
+    }, 
+    {
+      headers: {authorization : `Bearer ${token}`}
+    });
+  } catch (error) {
+    console.log(error);
+
+    return false;
+  }
+};

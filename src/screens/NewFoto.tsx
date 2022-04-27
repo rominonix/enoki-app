@@ -7,16 +7,18 @@ import {
   Image,
   Platform,
 } from "react-native";
-import globalStyles from "../styles/styles";
 import * as ImagePicker from "expo-image-picker";
-import axios from 'axios';
+import axios from "axios";
+import { UserContext } from "../contexts/UserContext";
+import { TextInput } from "react-native-gesture-handler";
+import globalStyles from "../styles/styles";
 
-interface imageData {
-  name: string;
-}
 
 const NewFoto: React.FC = () => {
+  const { newImage } = useContext(UserContext)!;
   const [image, setImage] = useState(null);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
     ImagePicker.requestMediaLibraryPermissionsAsync().then((response) => {
@@ -28,7 +30,6 @@ const NewFoto: React.FC = () => {
   }, []);
 
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       presentationStyle: 0,
       // mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -36,9 +37,6 @@ const NewFoto: React.FC = () => {
       // aspect: [4, 3],
       // quality: 1,
     });
-
-    console.log(result);
-
     if (!result.cancelled) {
       //@ts-ignore
       setImage(result.uri);
@@ -62,18 +60,21 @@ const NewFoto: React.FC = () => {
       name: "randon.jpg",
       type: "image/*",
       //@ts-ignore
-      uri: image.uri
-       
+      uri: image.uri,
     });
 
-    console.log(formData);
-    
+    // console.log(formData);
+
     const response = await axios.post(
-      "http://192.168.1.154:3000/api/image", 
+      "http://192.168.1.154:3000/api/image",
       formData
-    )
-    console.log(response.status, response.data);
-    
+    );
+    // console.log(response.status, response.data);
+  };
+
+  const saveImageInfo = async () => {
+    //@ts-ignore
+    newImage(name, description);
   };
 
   return (
@@ -85,22 +86,22 @@ const NewFoto: React.FC = () => {
           <Image source={{ uri: image }} style={{ width: 350, height: 350 }} />
         )}
 
-        <Button title="Spara" onPress={uploadImg} />
+        <TextInput
+          style={globalStyles.input}
+          value={name}
+          onChangeText={(text) => setName(text)}
+          autoCapitalize="none"
+        />
+
+        <TextInput
+         style={globalStyles.input}
+         value={description}
+         onChangeText={(text) => setDescription(text)}
+         autoCapitalize="none"
+         />
+
+        <Button title="Spara" onPress={saveImageInfo} />
       </View>
-      {/* <View style={[globalStyles.container]}>
-        <Text>NEW FOTO</Text>
-        <TouchableOpacity>
-          <Text>Ta ett foto</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity>
-          <Text>Hämta bilder från galleri</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity>
-          <Text>Cancel</Text>
-        </TouchableOpacity>
-      </View> */}
     </>
   );
 };
