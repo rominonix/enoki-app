@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { User, UserContextInterface } from "./types";
-import { Alert} from "react-native"
+import { Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as API from "./api";
 
@@ -15,8 +15,7 @@ const UserContextProvider: React.FC = (props) => {
   const login = async (email: string, password: string) => {
     try {
       const response = await API.login(email, password);
-      console.log("HOli response", response);
-      
+
       if (response) {
         setUser(response.user);
         setToken(response.token);
@@ -41,8 +40,6 @@ const UserContextProvider: React.FC = (props) => {
   const passwordReset = async (email: string) => {
     try {
       const response = await API.passwordReset(email);
-      console.log(response);
-      
     } catch (error) {
       console.log(error);
     }
@@ -53,8 +50,6 @@ const UserContextProvider: React.FC = (props) => {
       let userToken = await AsyncStorage.getItem("token");
       if (userToken) {
         const response = await API.getUser(userToken);
-        console.log("getDatarespone", response);
-        
 
         if (response.data.message === "Unauthorized") {
           Alert.alert("User unauthorized", "Try again", [
@@ -81,6 +76,16 @@ const UserContextProvider: React.FC = (props) => {
     setToken(null);
   };
 
+  const newImage = async (name: string, description: string) => {
+    
+    try {
+      //@ts-ignore
+      const response = await API.addNewImage(name, description, user?.id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const userContext: UserContextInterface = {
     user,
     token,
@@ -88,10 +93,9 @@ const UserContextProvider: React.FC = (props) => {
     register,
     passwordReset,
     getStorageData,
-    logout
+    logout,
+    newImage,
   };
-
-
 
   return (
     <UserContext.Provider value={userContext}>

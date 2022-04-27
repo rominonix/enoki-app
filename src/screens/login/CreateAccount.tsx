@@ -162,14 +162,12 @@ const CreateAccount: React.FC = () => {
             <Text style={styles.boldText}>
               Genom att klicka på registrerade såsom tycker du till 24gossip
             </Text>
-
             <Pressable
               onPress={() => navigation.navigate("Om 24 Gossip" as never)}
             >
               <Text style={styles.link}> användarvillkor </Text>
             </Pressable>
           </View>
-
           <View style={styles.textContainer}>
             <Text style={styles.boldText}>
               Om du vill veta mer om hur vi använder data
@@ -184,7 +182,7 @@ const CreateAccount: React.FC = () => {
         {/* ----------------- Create/Register a new user ---------------- */}
 
 
-        <Pressable style={globalStyles.buttonLogin} onPress={handleRegister}>
+        <Pressable style={globalStyles.button} onPress={handleRegister}>
           <Text style={{ textAlign: "center" }}>Skapa konto</Text>
         </Pressable>
 
