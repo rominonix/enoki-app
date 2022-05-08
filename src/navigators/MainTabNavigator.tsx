@@ -5,7 +5,7 @@ import Home from "../screens/homeScreen/HomeScreen"
 import Album from "../screens/Album";
 import NewFoto from "../screens/NewFoto";
 import Game from "../screens/Game";
-import Profile from "../screens/Profile";
+import Profile from "../screens/profile/Profile";
 import {
   HomeIcon,
   AlbumIcon,
