@@ -3,6 +3,7 @@ import { User, UserContextInterface } from "./types";
 import { Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as API from "./api";
+// import { addTitleAndDescription, addNewImage } from './api';
 
 export const UserContext = React.createContext<UserContextInterface | null>(
   null
@@ -76,15 +77,24 @@ const UserContextProvider: React.FC = (props) => {
     setToken(null);
   };
 
-  const newImage = async (name: string, description: string) => {
+  const titleAndDescription = async (title: string, description: string, image: object) => {
     
     try {
       //@ts-ignore
-      const response = await API.addNewImage(name, description, user?.id);
+      await API.addTitleAndDescription(title, description, user?.id, image);
     } catch (error) {
       console.log(error);
     }
   };
+  
+  const newImage = async (image: object) => {
+    try {
+      //@ts-ignore
+      await API.addNewImage(user?.id, image);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const userContext: UserContextInterface = {
     user,
@@ -94,7 +104,8 @@ const UserContextProvider: React.FC = (props) => {
     passwordReset,
     getStorageData,
     logout,
-    newImage,
+    titleAndDescription,
+    newImage
   };
 
   return (

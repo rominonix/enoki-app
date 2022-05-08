@@ -6,7 +6,8 @@ export interface UserContextInterface {
   passwordReset: (email: string) => Promise<void>;
   getStorageData: () => void;
   logout: () => void;
-  newImage: (name: string, description:string) => void;
+  titleAndDescription: (title: string, description:string, image: object) => void;
+  newImage: (image: object) => void
 }
 
 export interface User {
