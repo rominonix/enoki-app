@@ -7,11 +7,9 @@ import Photo from "../../../assets/mushroom-collage.jpeg";
 
 const HomeScreen: React.FC = () => {
   const { getRandomMushroom, randomMushroom } = useContext(UserContext)!;
-  const [showTopBtn, setShowTopBtn] = useState(false);
 
   useEffect(() => {
-    getRandomMushroom();
-   
+    getRandomMushroom();  
   }, []);
 
  const newMushroom = () => {
@@ -23,7 +21,7 @@ const HomeScreen: React.FC = () => {
       <ScrollView>
         <View>
           <View style={[globalStyles.container]}>
-            <Text style={globalStyles.homeTitle}>Enokisdagsvampen 🍄</Text>
+            <Text style={globalStyles.generalTitle}>Enokisdagsvampen 🍄</Text>
             <Text style={globalStyles.homeSubtitle}>
               {randomMushroom?._fieldsProto.swedishName.stringValue}
             </Text>
@@ -61,7 +59,7 @@ const HomeScreen: React.FC = () => {
             </Text>
 
             <TouchableOpacity style={globalStyles.button} onPress={newMushroom}>
-            <Text style={{textAlign: "center", }}>Next</Text>
+            <Text style={{textAlign: "center", }}> En svamp till </Text>
           </TouchableOpacity>
           </View>
         </View>
