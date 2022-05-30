@@ -20,7 +20,7 @@ export interface UserContextInterface {
 }
 
 export interface User {
-  id: string;
+  id?: string;
   name: string;
   password: string;
   email: string;

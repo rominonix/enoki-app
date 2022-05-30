@@ -10,10 +10,10 @@ import globalStyle from "../../styles/styles";
 import MenuItem from "./components/MenuItem";
 import styles from "./styles"
 const Profile: React.FC = () => {
-  const { logout } = useContext(UserContext)!;
-  // const navigation = useNavigation()
+  const { logout, user } = useContext(UserContext)!;
+  const navigation = useNavigation()
 
-  // console.log("profile", getStorageData());
+  console.log("profile", user);
 
   // useEffect(() => {
   //   getStorageData();
@@ -25,13 +25,13 @@ const Profile: React.FC = () => {
     // await AsyncStorage.removeItem("token")
     logout();
     //@ts-ignore
-    navigation.navigate("Login");
+    navigation.navigate("Login")
   };
 
   return (
     <>
       <View style={[globalStyles.container]}>
-        <Text>PROFILE</Text>
+        <Text> Hej {user?.name} </Text>
         <MenuItem
           text="Ändra lösenord"
           iconSource={0}

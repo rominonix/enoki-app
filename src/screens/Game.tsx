@@ -7,7 +7,7 @@ const Game: React.FC = () => {
   return (
     <>
       <View style={[globalStyles.container]}>
-          <Text>GAME</Text>
+          <Text>Spel</Text>
           <Pressable>
             <Text>bla bla bla</Text>
           </Pressable>

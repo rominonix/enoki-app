@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Text, View, Image, ListRenderItem, Pressable } from "react-native";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
-import { Mushroom } from "../contexts/types";
 import { UserContext } from "../contexts/UserContext";
 import globalStyles from "../styles/styles";
 //@ts-ignore
@@ -62,8 +61,8 @@ const Album = () => {
                       source={Photo}
                       style={globalStyles.imgContainerAlbum}
                     />
-                    <View style={{ paddingVertical: 10, paddingHorizontal: 30, alignItems: "center" }}>
-                      <Text style={{ fontSize: 18, textTransform: "capitalize"}}>{mushroom._fieldsProto.title.stringValue}</Text>
+                    <View style={globalStyles.singleImage}>
+                      <Text style={globalStyles.imageTitle}>{mushroom._fieldsProto.title.stringValue}</Text>
                       {/* <Text>
                         {mushroom._fieldsProto.description.stringValue}
                       </Text> */}

@@ -46,17 +46,17 @@ const MainTabNavigator = () => {
        
         tabBarIcon: ({ size, color }) => {
           if (route.name === "Lär mig") {
-            return <HomeIcon size={23} color={color} />;
+            return <HomeIcon size={25} color={color} />;
           }
           if (route.name === "Samling") {
             return <AlbumIcon size={28} color={color} />;
           }
           if (route.name === "Ny kort") {
-            return <CameraIcon size={26} color={color} />;
+            return <CameraIcon size={28} color={color} />;
           }
 
           if (route.name === "Spel") {
-            return <QuizIcon size={23} color={color} />;
+            return <QuizIcon size={25} color={color} />;
           }
 
           if (route.name === "Profil") {
