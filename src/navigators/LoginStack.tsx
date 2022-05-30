@@ -4,7 +4,6 @@ import Login from "../screens/login/Login";
 import CreateAccount from "../screens/login/CreateAccount";
 import ResetPassword from "../screens/login/PasswordReset";
 
-
 const Stack = createStackNavigator();
 
 const LoginStack = () => {
@@ -13,7 +12,6 @@ const LoginStack = () => {
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
       <Stack.Screen name="Create account" component={CreateAccount} options={{ headerShown: false }}/>
       <Stack.Screen name="Password reset" component={ResetPassword}/>
-
     </Stack.Navigator>
   );
 };
