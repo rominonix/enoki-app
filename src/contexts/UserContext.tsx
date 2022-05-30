@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { User, UserContextInterface } from "./types";
+import React, { useState } from "react";
+import { User, Mushroom, UserContextInterface, RandomMushroom } from './types';
 import { Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as API from "./api";
-// import { addTitleAndDescription, addNewImage } from './api';
 
 export const UserContext = React.createContext<UserContextInterface | null>(
   null
@@ -12,11 +11,12 @@ export const UserContext = React.createContext<UserContextInterface | null>(
 const UserContextProvider: React.FC = (props) => {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
+  const [mushrooms, setMushrooms] = useState<Mushroom[]>([]);
+  const [randomMushroom, setRandomMushroom] = useState<RandomMushroom | null >(null)
 
   const login = async (email: string, password: string) => {
     try {
       const response = await API.login(email, password);
-
       if (response) {
         setUser(response.user);
         setToken(response.token);
@@ -77,8 +77,11 @@ const UserContextProvider: React.FC = (props) => {
     setToken(null);
   };
 
-  const titleAndDescription = async (title: string, description: string, image: object) => {
-    
+  const titleAndDescription = async (
+    title: string,
+    description: string,
+    image: object
+  ) => {
     try {
       //@ts-ignore
       await API.addTitleAndDescription(title, description, user?.id, image);
@@ -86,11 +89,39 @@ const UserContextProvider: React.FC = (props) => {
       console.log(error);
     }
   };
-  
-  const newImage = async (image: object) => {
+
+
+  const getAlbums = async () => {
     try {
-      //@ts-ignore
-      await API.addNewImage(user?.id, image);
+      let userToken = await AsyncStorage.getItem("token");
+      if (userToken) {
+        const response = await API.getUserImages(userToken);
+        // console.log("getalbum",response);       
+        if (response) {
+          setMushrooms(response)
+  
+          // setPagination(response.pagination);
+          // console.log("HONGIS", typeof mushrooms, mushrooms);          
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getRandomMushroom = async () => {
+    try {
+      let userToken = await AsyncStorage.getItem("token");
+      if (userToken) {
+        const response = await API.getRandom(userToken);
+        // console.log("getalbum",response);       
+        if (response) {
+          
+          setRandomMushroom(response)
+          // setPagination(response.pagination);
+               
+        }
+      }
     } catch (error) {
       console.log(error);
     }
@@ -99,13 +130,16 @@ const UserContextProvider: React.FC = (props) => {
   const userContext: UserContextInterface = {
     user,
     token,
+    mushrooms,
+    randomMushroom,
     login,
     register,
     passwordReset,
     getStorageData,
     logout,
     titleAndDescription,
-    newImage
+    getAlbums,
+    getRandomMushroom
   };
 
   return (

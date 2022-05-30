@@ -4,10 +4,7 @@ import { User } from "./types";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // const HOST = Platform.OS === "ios" ? "localhost" : "10.0.2.2";
-const HOST = "192.168.1.154";
-// const HOST = "enoki";
-// const HOST = "localhost";
-
+const HOST = "192.168.1.155";
 
 const API = axios.create({ baseURL: `http://${HOST}:3000/api/` });
 
@@ -26,14 +23,12 @@ export const login = async (email: string, password: string) => {
       email,
       password,
     });
-
     return {
       user: response.data.user,
       token: response.data.token,
     };
   } catch (error) {
     console.log(error);
-
     return false;
   }
 };
@@ -63,9 +58,7 @@ export const addTitleAndDescription = async (
 ) => {
   let token = await AsyncStorage.getItem("token");
   let id = user;
-  // let url = `/${user}/image`;
   let url = "/image";
-
 
   try {
     const response = await API.post(
@@ -94,8 +87,6 @@ export const addTitleAndDescription = async (
 };
 
 export const addNewImage = async (
-  // name: string,
-  // description: string,
   user: User,
   image: object,
 ) => {
@@ -107,19 +98,16 @@ export const addNewImage = async (
     const response = await API.post(
       url,
       {
-        // title,
-        // description,
         userId: id,
         image,
       },
       {
         headers: {
-          // Accept: "application/json,text/*;q=0.99", 
           Authorization: `Bearer ${token}`,
           "content-type": "multipart/form-data",
         },
         transformRequest: (data, headers) => {
-          return image; // this is doing the trick
+          return image;
         },
       }
     );
@@ -128,3 +116,24 @@ export const addNewImage = async (
     return false;
   }
 };
+
+
+export const getUserImages = async (token: string) => {
+  const response = await API.get("/images", {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  }); 
+  return response.data.mushrooms;
+};
+
+export const getRandom = async (token: string) => {
+  const response = await API.get("/random", {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  }); 
+
+  return response.data;
+};
+
