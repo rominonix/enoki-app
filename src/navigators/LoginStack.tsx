@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 const LoginStack = () => {
   return (
     <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
+      <Stack.Screen name="Login" component={Login} options={{ headerShown: false, title: "Login" }}/>
       <Stack.Screen name="Create account" component={CreateAccount} options={{ headerShown: false }}/>
       <Stack.Screen name="Password reset" component={ResetPassword}/>
     </Stack.Navigator>

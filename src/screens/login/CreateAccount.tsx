@@ -74,35 +74,49 @@ const CreateAccount: React.FC = () => {
   return (
     <SafeAreaView style={globalStyles.container}>
       {/* <ScrollView> */}
-      <View>
+      {/* <View> */}
+      <View
+        style={{
+          backgroundColor: "#F1FFE0",
+          borderRadius: 200,
+          justifyContent: "center",
+          alignItems: "center",
+          width: 120,
+          height: 120,
+          marginBottom: 15,
+        }}
+      >
+        <Text style={{ fontSize: 70 }}>🍄</Text>
+      </View>
  
         <View>
-          <Text>Skappa ett nytt konto</Text>
+          <Text style={{ fontSize: 20 }}>Skappa ett nytt konto i Enoki</Text>
         </View>
 
         {/* ----------------- Name Input ---------------- */}
 
-        <View>
-          <View>
+        {/* <View> */}
+          <View style={{marginTop: 25, marginBottom: 10}}>
+            <Text>Namn</Text>
             <TextInput
-              style={globalStyles.input}
+              style={globalStyles.inputLogin}
               value={name}
               placeholder="Namn"
               placeholderTextColor="#706F70"
               onChangeText={(text) => {
                 setName(text);
               }}
-              autoCapitalize="none"
             />
           </View>
-        </View>
+        {/* </View> */}
 
         {/* ----------------- Email Input ---------------- */}
 
         <View>
-          <View>
+          <View style={{ marginBottom: 10}}>
+          <Text>E-postaddress</Text>
             <TextInput
-              style={globalStyles.input}
+              style={globalStyles.inputLogin}
               value={email}
               placeholder="E-postadress"
               placeholderTextColor="#706F70"
@@ -115,9 +129,10 @@ const CreateAccount: React.FC = () => {
         {/* ----------------- Password Input ---------------- */}
 
         <View>
-          <View>
+          <View style={{ marginBottom: 5}}>
+          <Text>Ditt superhemligt losenörd</Text>
             <TextInput
-              style={globalStyles.input}
+              style={globalStyles.inputLogin}
               value={password}
               placeholder="Lösenord"
               placeholderTextColor="#706F70"
@@ -140,44 +155,7 @@ const CreateAccount: React.FC = () => {
             </Text> */}
         </View>
 
-        {/* ----------------- Checkbox ---------------- */}
-
-        {/* <View style={styles.checkBoxContainer}>
-            <CheckBox
-              value={isSelected}
-              onValueChange={setIsSelected}
-              style={styles.checkbox}
-              color={isSelected ? "#D7097A" : undefined}
-            />
-            <Text style={styles.conditions}>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-              erat, sed diam voluptua. At vero
-            </Text>
-          </View> */}
-
-        {/* ----------------- Conditions ---------------- */}
-
-        {/* <View style={styles.textContainer}>
-            <Text style={styles.boldText}>
-              Genom att klicka på registrerade såsom tycker du till 24gossip
-            </Text>
-            <Pressable
-              onPress={() => navigation.navigate("Om 24 Gossip" as never)}
-            >
-              <Text style={styles.link}> användarvillkor </Text>
-            </Pressable>
-          </View>
-          <View style={styles.textContainer}>
-            <Text style={styles.boldText}>
-              Om du vill veta mer om hur vi använder data
-            </Text>
-            <Pressable
-              onPress={() => navigation.navigate("Om 24 Gossip" as never)}
-            >
-              <Text style={styles.link}>tryck här</Text>
-            </Pressable>
-          </View> */}
+        
 
         {/* ----------------- Create/Register a new user ---------------- */}
 
@@ -186,7 +164,7 @@ const CreateAccount: React.FC = () => {
           <Text style={{ textAlign: "center" }}>Skapa konto</Text>
         </Pressable>
 
-        <View>
+        <View style={{ marginTop: 20, justifyContent: "center", alignItems: "center"}}>
           <Text>Har du redan ett konto? </Text>
           <Pressable
             onPress={() =>
@@ -194,10 +172,10 @@ const CreateAccount: React.FC = () => {
               navigation.navigate("Login")
             }
           >
-            <Text>Logga in</Text>
+            <Text style={{color: "green", fontWeight:"bold", marginTop: 2}}>Logga in</Text>
           </Pressable>
         </View>
-      </View>
+      {/* </View> */}
       {/* </ScrollView> */}
     </SafeAreaView>
   );

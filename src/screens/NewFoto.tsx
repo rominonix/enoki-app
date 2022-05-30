@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
-import { ScrollView, View, Button, Image } from "react-native";
+import { ScrollView, View, Button, Image, Text } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import * as ImagePicker from "expo-image-picker";
 import { UserContext } from "../contexts/UserContext";
 import { TextInput } from "react-native-gesture-handler";
@@ -53,41 +54,70 @@ const NewFoto: React.FC = () => {
       uri: image,
     });
 
-    formData.append("title", title)
-    formData.append("description", description)
-    titleAndDescription(title, description, formData); 
+    formData.append("title", title);
+    formData.append("description", description);
+    titleAndDescription(title, description, formData);
   };
 
   return (
     <>
       <ScrollView>
         <View
-          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+          style={globalStyles.container}
+          // style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
-          <Button title="Pick an image from camera roll" onPress={pickImage} />
-          <Button title="Camera" onPress={takePhoto} />
-          {image && (
-            <Image
-              source={{ uri: image }}
-              style={{ width: 350, height: 350 }}
-            />
-          )}
+          <Text>Välj ett alternative</Text>
+          <View style={globalStyles.buttonContainer}>
+            <TouchableOpacity
+              onPress={pickImage}
+              style={globalStyles.buttonNewFoto}
+            >
+              <Text>Välj en bild</Text>
+            </TouchableOpacity>
 
+            <TouchableOpacity
+              onPress={takePhoto}
+              style={globalStyles.buttonNewFoto}
+            >
+              <Text>Ta ett ny bild</Text>
+            </TouchableOpacity>
+          </View>
+          {/* <Button title="Välj en bild från ditt galleri" onPress={pickImage} /> */}
+          {/* <Button title="Ta ett ny bild" onPress={takePhoto} /> */}
+
+          <View style={{ width: 350, height: "auto", marginVertical: 20 }}>
+            {/* <Text>din bild kommer sinas här</Text> */}
+
+            {image && (
+              <Image
+                source={{ uri: image }}
+                style={{ width: 350, height: 400 }}
+              />
+            )}
+          </View>
+          <Text>Namn på svampen</Text>
           <TextInput
             style={globalStyles.input}
             value={title}
             onChangeText={(text) => setTitle(text)}
             autoCapitalize="none"
           />
-
+          <Text>Anteckning</Text>
           <TextInput
-            style={globalStyles.input}
+            multiline={true}
+            style={globalStyles.textArea}
             value={description}
             onChangeText={(text) => setDescription(text)}
             autoCapitalize="none"
           />
 
-          <Button title="Spara" onPress={saveImageInfo} />
+          <TouchableOpacity
+            onPress={saveImageInfo}
+            style={globalStyles.buttonNewFoto}
+          >
+            <Text>Spara</Text>
+          </TouchableOpacity>
+          {/* <Button title="Spara" onPress={saveImageInfo} /> */}
         </View>
       </ScrollView>
     </>
