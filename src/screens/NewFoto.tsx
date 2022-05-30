@@ -1,13 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ScrollView, View, Button, Image } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-import axios from "axios";
 import { UserContext } from "../contexts/UserContext";
 import { TextInput } from "react-native-gesture-handler";
 import globalStyles from "../styles/styles";
 
 const NewFoto: React.FC = () => {
-  const { titleAndDescription, newImage } = useContext(UserContext)!;
+  const { titleAndDescription } = useContext(UserContext)!;
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -45,27 +44,7 @@ const NewFoto: React.FC = () => {
     }
   };
 
-  const saveImage = async () => {
-    const formData = new FormData();
-    formData.append("image", {
-      //@ts-ignore
-      name: "random.jpg",
-      type: "image/*",
-      uri: image,
-    });
-
-    // //@ts-ignore
-    // console.log(typeof formData, formData);
-    // return formData
-    newImage(formData)
-  }
-
-
-
   const saveImageInfo = async () => {
-    // console.log("The URI")
-    // console.log(image)
-
     const formData = new FormData();
     formData.append("image", {
       //@ts-ignore
@@ -76,71 +55,8 @@ const NewFoto: React.FC = () => {
 
     formData.append("title", title)
     formData.append("description", description)
-
-//@ts-ignore
-    console.log(typeof formData, formData);
-    
-    
-    titleAndDescription(title, description, formData);
-    // console.log(formData);
-
-    // console.log("SaveImageInfo")
-    // console.log(image);
-
-    // const response = await axios.post(
-    //   "http://192.168.1.154:3000/api/d4bb0249-4be6-4ad1-baf7-350af001cc1d/image",
-    //   formData,
-    //   {
-    //     headers: {
-    //       "content-type": "multipart/form-data",
-    //     },
-    //     transformRequest: (data, headers) => {
-    //       return formData; // this is doing the trick
-    //     },
-    //   }
-    // );
-
-    // console.log(response.headers);
-    // console.log(response.data);
+    titleAndDescription(title, description, formData); 
   };
-
-//   const saveImageInfo = async () => {
-//     // console.log("The URI")
-//     // console.log(image)
-
-// //     const formData = new FormData();
-// //     formData.append("image", {
-// //       //@ts-ignore
-// //       name: "random.jpg",
-// //       type: "image/*",
-// //       uri: image,
-// //     });
-// // //@ts-ignore
-// //     console.log(typeof formData, formData);
-    
-    
-//     titleAndDescription(title, description);
-//     // console.log(formData);
-
-//     // console.log("SaveImageInfo")
-//     // console.log(image);
-
-//     // const response = await axios.post(
-//     //   "http://192.168.1.154:3000/api/d4bb0249-4be6-4ad1-baf7-350af001cc1d/image",
-//     //   formData,
-//     //   {
-//     //     headers: {
-//     //       "content-type": "multipart/form-data",
-//     //     },
-//     //     transformRequest: (data, headers) => {
-//     //       return formData; // this is doing the trick
-//     //     },
-//     //   }
-//     // );
-
-//     // console.log(response.headers);
-//     // console.log(response.data);
-//   };
 
   return (
     <>
