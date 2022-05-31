@@ -41,8 +41,8 @@ const Album = () => {
     <>
       <ScrollView>
         <View style={[globalStyles.container]}>
-          <Text style={globalStyles.generalTitle}>🍄 Mina svampar 🍄 </Text>
-          <View>
+          <Text style={globalStyles.generalTitle}> Mina svampar 🍄 </Text>
+          <View style={{backgroundColor: "transparent", flex: 1, flexDirection: "row",   flexWrap: "wrap", alignItems: "center", justifyContent: "space-evenly"}}>
             {mushrooms?.map((mushroom) => {
               return (
                 <View

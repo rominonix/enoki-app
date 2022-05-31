@@ -24,15 +24,17 @@ const MainTabNavigator = () => {
       initialRouteName="Lär mig"
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarActiveTintColor: "black",
-        tabBarInactiveTintColor: "#F1FFE0",
+        tabBarActiveTintColor: "#F1FFE0",
+        tabBarInactiveTintColor: "#343434",
         tabBarHideOnKeyboard: true,
         tabBarShowLabel: true,    
         tabBarIconStyle: {
           padding: 5,
         },
         tabBarStyle: {
-          backgroundColor: "#B3E96F",
+          // backgroundColor: "#B3E96F",
+          backgroundColor: "#828C61",
+
           paddingBottom: 10,
           paddingTop: 18,
           height: 55,

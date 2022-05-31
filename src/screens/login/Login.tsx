@@ -4,7 +4,6 @@ import {
   TextInput,
   Pressable,
   Alert,
-  StyleSheet,
   SafeAreaView,
 } from "react-native";
 import React, { useEffect, useContext, useState } from "react";
@@ -24,7 +23,6 @@ const Login: React.FC = () => {
     // setLoginIn(true);
     // setButtontext('LOGGAR IN...')
     login(email, password);
-    // console.log("loginnn");
   };
 
   const handleCreateAccount = () => {
@@ -43,7 +41,6 @@ const Login: React.FC = () => {
 
   return (
     <SafeAreaView style={globalStyle.container}>
-      {/* <View> */}
       <View
         style={{
           backgroundColor: "#F1FFE0",
@@ -57,44 +54,87 @@ const Login: React.FC = () => {
       >
         <Text style={{ fontSize: 70 }}>🍄</Text>
       </View>
-      <Text style={{ fontSize: 20 }}>Välkommen till Enoki</Text>
-      <Text style={{ fontSize: 15, marginTop: 8 }}>
-        Din app för att gå till skogen 🌲
+      <Text style={{ fontSize: 20, fontWeight: "300", color: "#343434" }}>
+        Välkommen till Enoki! 🤓{" "}
       </Text>
+      {/* <Text style={{ fontSize: 15, marginTop: 8, color:"#343434", fontWeight: "300" }}>
+        Din app för att gå till skogen 🌲
+      </Text> */}
 
       <View style={{ marginTop: 25 }}>
-        <Text>E-postdress</Text>
+        <Text style={globalStyle.label}>E-postdress</Text>
 
         <TextInput
           style={globalStyle.inputLogin}
           value={email}
           onChangeText={(text) => setEmail(text)}
           autoCapitalize="none"
+          placeholder="E-postadress"
+          placeholderTextColor="#706F70"
         />
       </View>
 
       <View>
-        <Text>Losenörd</Text>
+        <Text style={globalStyle.label}>Losenörd</Text>
         <TextInput
           style={globalStyle.inputLogin}
           value={password}
           onChangeText={(text) => setPassword(text)}
           autoCapitalize="none"
+          placeholder="Losenörd"
+          placeholderTextColor="#706F70"
+          secureTextEntry
         />
       </View>
 
-      <TouchableOpacity style={globalStyle.button} onPress={handleLogin}>
-        <Text style={{ textAlign: "center" }}>Login</Text>
+      <View style={{ alignItems: "flex-end", width: 290 }}>
+        <Pressable onPress={handleResetPassword}>
+          <Text
+            style={{
+              color: "#343434",
+              fontWeight: "600",
+              fontSize: 10,
+              textTransform: "uppercase",
+            }}
+          >
+            Återställ lösenord
+          </Text>
+        </Pressable>
+      </View>
+      <TouchableOpacity style={globalStyle.buttonNewFoto} onPress={handleLogin}>
+        <Text
+          style={{
+            color: "#343434",
+            fontWeight: "700",
+            fontSize: 12,
+            textTransform: "uppercase",
+          }}
+        >
+          Logga in
+        </Text>
       </TouchableOpacity>
 
-      <Pressable onPress={handleResetPassword}>
-        <Text style={{ textAlign: "center", marginTop: 8 }}>Reset password</Text>
-      </Pressable>
+      <View style={globalStyle.lineContainer}>
+        <View style={globalStyle.line} />
+        <Text style={globalStyle.label}>Eller</Text>
+        <View style={globalStyle.line} />
+      </View>
 
-      <Pressable style={globalStyle.button} onPress={handleCreateAccount}>
-        <Text style={{ textAlign: "center" }}>Create account</Text>
+      <Pressable
+        style={globalStyle.buttonNewFoto}
+        onPress={handleCreateAccount}
+      >
+        <Text
+          style={{
+            color: "#343434",
+            fontWeight: "700",
+            fontSize: 12,
+            textTransform: "uppercase",
+          }}
+        >
+          Skapa konto
+        </Text>
       </Pressable>
-      {/* </View> */}
     </SafeAreaView>
   );
 };

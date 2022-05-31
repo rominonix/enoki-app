@@ -83,21 +83,22 @@ const CreateAccount: React.FC = () => {
           alignItems: "center",
           width: 120,
           height: 120,
-          marginBottom: 15,
+          marginTop: 25,
+          marginBottom: 5,
         }}
       >
         <Text style={{ fontSize: 70 }}>🍄</Text>
       </View>
  
         <View>
-          <Text style={{ fontSize: 20 }}>Skappa ett nytt konto i Enoki</Text>
+          <Text style={{ fontSize: 20, fontWeight: "300", color:"#343434" }}>Skappa ett nytt konto i Enoki</Text>
         </View>
 
         {/* ----------------- Name Input ---------------- */}
 
         {/* <View> */}
-          <View style={{marginTop: 25, marginBottom: 10}}>
-            <Text>Namn</Text>
+          <View style={{marginTop: 15, marginBottom: 10}}>
+            <Text style={globalStyles.label}>Namn</Text>
             <TextInput
               style={globalStyles.inputLogin}
               value={name}
@@ -114,7 +115,7 @@ const CreateAccount: React.FC = () => {
 
         <View>
           <View style={{ marginBottom: 10}}>
-          <Text>E-postaddress</Text>
+          <Text style={globalStyles.label}>E-postaddress</Text>
             <TextInput
               style={globalStyles.inputLogin}
               value={email}
@@ -130,7 +131,7 @@ const CreateAccount: React.FC = () => {
 
         <View>
           <View style={{ marginBottom: 5}}>
-          <Text>Ditt superhemligt losenörd</Text>
+          <Text style={globalStyles.label}>Ditt superhemligt losenörd</Text>
             <TextInput
               style={globalStyles.inputLogin}
               value={password}
@@ -160,23 +161,26 @@ const CreateAccount: React.FC = () => {
         {/* ----------------- Create/Register a new user ---------------- */}
 
 
-        <Pressable style={globalStyles.button} onPress={handleRegister}>
-          <Text style={{ textAlign: "center" }}>Skapa konto</Text>
+        <Pressable style={globalStyles.buttonNewFoto} onPress={handleRegister}>
+          <Text style={{color: "#343434", fontWeight: "700", fontSize: 12, textTransform: "uppercase"}}>Skapa konto</Text>
         </Pressable>
 
-        <View style={{ marginTop: 20, justifyContent: "center", alignItems: "center"}}>
-          <Text>Har du redan ett konto? </Text>
+        {/* <View style={{  justifyContent: "center", alignItems: "center"}}> */}
+          {/* <Text>Har du redan ett konto? </Text> */}
+          <View style={globalStyles.lineContainer}>
+        <View style={globalStyles.line} />
+        <Text style={globalStyles.label}>Har du redan ett konto?</Text>
+        <View style={globalStyles.line} />
+      </View>
           <Pressable
             onPress={() =>
               //@ts-ignore
               navigation.navigate("Login")
             }
+            // style={globalStyles.buttonNewFoto}
           >
-            <Text style={{color: "green", fontWeight:"bold", marginTop: 2}}>Logga in</Text>
+            <Text style={{color: "#343434", fontWeight: "700", fontSize: 12, textTransform: "uppercase"}}>Logga in</Text>
           </Pressable>
-        </View>
-      {/* </View> */}
-      {/* </ScrollView> */}
     </SafeAreaView>
   );
 };

@@ -35,10 +35,24 @@ const ResetPassword: React.FC = () => {
       {/* <View style={styles.logoView}>
         <Logo width={150} height={75} />
       </View> */}
+
+<View
+        style={{
+          backgroundColor: "#F1FFE0",
+          borderRadius: 200,
+          justifyContent: "center",
+          alignItems: "center",
+          width: 120,
+          height: 120,
+          marginBottom: 15,
+        }}
+      >
+        <Text style={{ fontSize: 70 }}>🍄</Text>
+      </View>
       <View>
-        <Text>Ange ditt E-postadress</Text>
+        <Text style={globalStyles.label}>Ange ditt e-postadress</Text>
         <TextInput
-          style={globalStyles.input}
+          style={globalStyles.inputLogin}
           value={email}
           placeholderTextColor="#706F70"
           onChangeText={(text) => setEmail(text)}
@@ -48,12 +62,12 @@ const ResetPassword: React.FC = () => {
       </View>
 
       <Pressable
-      style={{backgroundColor: "green"}}
+      style={globalStyles.buttonNewFoto}
          onPress={() => {
             controllEmail(), sendEmail();
           }}
         >
-          <Text> Send mail </Text>
+          <Text style={globalStyles.textButton}> skicka e-post </Text>
         </Pressable>
       {/* <Button
         text="skicka email"
@@ -69,7 +83,7 @@ const ResetPassword: React.FC = () => {
             navigation.navigate("Login");
           }}
         >
-          <Text> to Login </Text>
+          <Text style={{color: "#343434", fontWeight: "600", fontSize: 12, textTransform: "uppercase"}}> Till logga in </Text>
         </Pressable>
       </View>
     </View>

@@ -7,9 +7,9 @@ const Game: React.FC = () => {
   return (
     <>
       <View style={[globalStyles.container]}>
-          <Text>Spel</Text>
+          <Text style={globalStyles.generalTitle}>Spel</Text>
           <Pressable>
-            <Text>bla bla bla</Text>
+            <Text>🍄 🍄 🍄 🍄 🍄 🍄 </Text>
           </Pressable>
       </View>
     </>
