@@ -4,14 +4,15 @@ import { UserContext } from "../../contexts/UserContext";
 import globalStyles from "../../styles/styles";
 //@ts-ignore
 import Photo from "../../../assets/mushroom-collage.jpeg";
+import FavoriteButton from "../../components/FavoriteButton";
 
 const HomeScreen: React.FC = () => {
   const { getRandomMushroom, randomMushroom } = useContext(UserContext)!;
   const scrollRef: React.MutableRefObject<any> = useRef();
 
-  useEffect(() => {
-    getRandomMushroom();  
-  }, []);
+  // useEffect(() => {
+  //   getRandomMushroom();  
+  // }, []);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({
@@ -29,7 +30,7 @@ const HomeScreen: React.FC = () => {
       <ScrollView ref={scrollRef}>
         <View>
           <View style={[globalStyles.container]}>
-            <Text style={globalStyles.generalTitle}>Enokisdagsvampen 🍄</Text>
+            <Text style={globalStyles.generalTitle}>Dagensvamp 🍄</Text>
             <Text style={globalStyles.homeSubtitle}>
               {randomMushroom?._fieldsProto.swedishName.stringValue}
             </Text>
@@ -38,6 +39,7 @@ const HomeScreen: React.FC = () => {
               style={globalStyles.imgHome}
               source={{ uri: randomMushroom?.firebaseUrl }}
             /> */}
+            <FavoriteButton isFavorite={false} mushroomId={""}/>
               <Image style={globalStyles.imgHome} source={Photo} />
               <Text style={globalStyles.imageAuthor}>
                 {randomMushroom?._fieldsProto.imageAuthor.stringValue}
@@ -66,8 +68,8 @@ const HomeScreen: React.FC = () => {
               {randomMushroom?._fieldsProto.description.stringValue}
             </Text>
 
-            <TouchableOpacity style={globalStyles.button} onPress={newMushroom}>
-            <Text style={{textAlign: "center", }}> En svamp till </Text>
+            <TouchableOpacity style={globalStyles.buttonLogin} onPress={newMushroom}>
+            <Text style={globalStyles.textButtonLogin}> En svamp till </Text>
           </TouchableOpacity>
           </View>
         </View>

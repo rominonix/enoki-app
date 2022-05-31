@@ -66,20 +66,22 @@ const NewFoto: React.FC = () => {
           style={globalStyles.container}
           // style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
-          <Text>Välj ett alternative</Text>
+
+          <Text style={globalStyles.generalTitle}>Välj ett alternative 🤔</Text>
+          
           <View style={globalStyles.buttonContainer}>
             <TouchableOpacity
               onPress={pickImage}
-              style={globalStyles.buttonNewFoto}
+              style={globalStyles.buttonLogin}
             >
-              <Text>Välj en bild</Text>
+              <Text style={globalStyles.textButtonLogin}>Välj en bild</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={takePhoto}
-              style={globalStyles.buttonNewFoto}
+              style={globalStyles.buttonLogin}
             >
-              <Text>Ta ett ny bild</Text>
+              <Text style={globalStyles.textButtonLogin}>Ta ett ny bild</Text>
             </TouchableOpacity>
           </View>
           {/* <Button title="Välj en bild från ditt galleri" onPress={pickImage} /> */}
@@ -95,30 +97,41 @@ const NewFoto: React.FC = () => {
               />
             )}
           </View>
-          <Text>Namn på svampen</Text>
+          <View style={{ justifyContent: "flex-start", width: 340 }}>
+            <Text
+              style={globalStyles.label}
+            >
+              Namn på svampen
+            </Text>
+          </View>
           <TextInput
             style={globalStyles.input}
             value={title}
             onChangeText={(text) => setTitle(text)}
-            autoCapitalize="none"
+            placeholder="Namn på svampen"
           />
-          <Text>Anteckning</Text>
+
+          <View style={{ justifyContent: "flex-start", width: 340 }}>
+
+
+          <Text style={globalStyles.label}>Anteckning</Text>
+          </View>
           <TextInput
             multiline={true}
             style={globalStyles.textArea}
             value={description}
             onChangeText={(text) => setDescription(text)}
-            autoCapitalize="none"
           />
 
           <TouchableOpacity
             onPress={saveImageInfo}
-            style={globalStyles.buttonNewFoto}
+            style={globalStyles.buttonLogin}
           >
-            <Text>Spara</Text>
+            <Text style={globalStyles.textButtonLogin}>Spara</Text>
           </TouchableOpacity>
           {/* <Button title="Spara" onPress={saveImageInfo} /> */}
         </View>
+        {/* </View> */}
       </ScrollView>
     </>
   );

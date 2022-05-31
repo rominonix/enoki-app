@@ -9,9 +9,24 @@ const Stack = createStackNavigator();
 const LoginStack = () => {
   return (
     <Stack.Navigator initialRouteName="Login">
-      <Stack.Screen name="Login" component={Login} options={{ headerShown: false, title: "Login" }}/>
-      <Stack.Screen name="Create account" component={CreateAccount} options={{ headerShown: false }}/>
-      <Stack.Screen name="Password reset" component={ResetPassword}/>
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          headerShown: false,
+          title: "Logga in"
+        }}
+      />
+      <Stack.Screen
+        name="Create account"
+        component={CreateAccount}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Password reset"
+        component={ResetPassword}
+        options={{ title: "Lösenordsåterställning", headerLeft: () => null,  headerStyle: { backgroundColor: "#F1FFE0", borderColor: "#F1FFE0"}, headerTitleStyle: { fontSize: 16, fontWeight: "400"} }}
+      />
     </Stack.Navigator>
   );
 };

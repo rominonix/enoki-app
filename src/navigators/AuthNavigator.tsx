@@ -9,6 +9,10 @@ const AuthNavigator: React.FC = () => {
     return !user ? (
       <LoginStack />) : (
       <MainTabNavigator />)
+
+      // return (
+        
+      //   <MainTabNavigator />)
 } ;
 
 export default AuthNavigator;
