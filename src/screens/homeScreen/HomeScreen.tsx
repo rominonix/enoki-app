@@ -30,7 +30,7 @@ const HomeScreen: React.FC = () => {
       <ScrollView ref={scrollRef}>
         <View>
           <View style={[globalStyles.container]}>
-            <Text style={globalStyles.generalTitle}>Enokisdagsvampen 🍄</Text>
+            <Text style={globalStyles.generalTitle}>Dagensvamp 🍄</Text>
             <Text style={globalStyles.homeSubtitle}>
               {randomMushroom?._fieldsProto.swedishName.stringValue}
             </Text>
@@ -68,8 +68,8 @@ const HomeScreen: React.FC = () => {
               {randomMushroom?._fieldsProto.description.stringValue}
             </Text>
 
-            <TouchableOpacity style={globalStyles.buttonNewFoto} onPress={newMushroom}>
-            <Text style={globalStyles.textButton}> En svamp till </Text>
+            <TouchableOpacity style={globalStyles.buttonLogin} onPress={newMushroom}>
+            <Text style={globalStyles.textButtonLogin}> En svamp till </Text>
           </TouchableOpacity>
           </View>
         </View>

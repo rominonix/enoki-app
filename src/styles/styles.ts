@@ -53,6 +53,7 @@ export default StyleSheet.create({
   // Samling style
 
   imgContainerAlbum: {
+    // marginTop: 20,
     width: 160,
     height: 160,
     // borderTopStartRadius: 10,
@@ -62,38 +63,49 @@ export default StyleSheet.create({
   },
 
   samlingContainer: {
+    // paddingTop: 20,
+    
     borderRadius: 10,
     backgroundColor: "#E2F2CD",
     marginTop: 30,
     justifyContent: "center",
     alignItems: "center",
+    
   },
 
   singleImage: {
-    paddingVertical: 10,
+    paddingVertical: 8,
     // paddingHorizontal: 30,
     alignItems: "center",
   },
 
   imageTitle: {
-    fontSize: 14,
-    textTransform: "capitalize",
+    marginTop: 10,
+    fontSize: 10,
+    fontWeight: "700",
+    textTransform: "uppercase",
+    color: "#828C61"
   },
 
   // Home styles
   generalTitle: {
+    position: "absolute",
+    
     fontSize: 18,
-    paddingBottom: 18,
-    color: "#343434",
-    fontWeight: "300",
-    textTransform: "uppercase"
+    // paddingBottom: 18,
+   
+    color: "#828C61",
+    fontWeight: "400",
+    textTransform: "uppercase",
+    top: 40
     // fontFamily: WorkSans_600SemiBold_Italic
   },
 
   homeSubtitle: {
     fontSize: 14,
+    marginTop: 20,
     paddingBottom: 10,
-    color: "#343434",
+    color: "#828C61",
     fontWeight: "400",
     textTransform: "uppercase"
   },
@@ -129,13 +141,13 @@ export default StyleSheet.create({
     fontSize: 16,
     fontWeight: "400",
     paddingBottom: 4,
-    color: "#343434"
+    color: "#828C61"
   },
 
   name: {
     fontSize: 14,
     paddingBottom: 10,
-    color: "#343434",
+    color: "#828C61",
     fontWeight: "400",
     textTransform: "uppercase",
     // paddingBottom: 10,
@@ -153,6 +165,7 @@ export default StyleSheet.create({
   //ny foto style
 
   buttonContainer: {
+    marginTop: 30,
     width: 250,
     flexDirection: "row",
     justifyContent: "center",
@@ -165,7 +178,7 @@ export default StyleSheet.create({
     margin: 10,
     paddingHorizontal: 38,
     paddingVertical: 15,
-    backgroundColor: "#B3E96F",
+    backgroundColor: "#828C61",
   },
 
   textArea: {
@@ -181,7 +194,7 @@ export default StyleSheet.create({
   // loggin style
 
   label: {
-    color: "#494545",
+    color: "#828C61",
     fontSize: 12,
   },
 
@@ -203,7 +216,47 @@ export default StyleSheet.create({
   textButton: {
     color: "#343434",
     fontWeight: "700",
-    fontSize: 12,
+    fontSize: 10,
     textTransform: "uppercase",
   },
+
+
+  textButtonLogin: {
+    color: "#828C61",
+    fontWeight: "700",
+    fontSize: 10,
+    textTransform: "uppercase",
+  },
+
+  buttonLogin: {
+    width: "auto",
+    borderRadius: 3,
+    margin: 10,
+    paddingHorizontal: 38,
+    paddingVertical: 15,
+    // shadowOpacity: 5,
+    backgroundColor: "#E2F2CD",
+    borderColor: "#828C61",
+    borderWidth: 0.5
+  },
+
+  buttonGame: {
+    width: 200,
+    borderRadius: 3,
+    margin: 10,
+    paddingHorizontal: 38,
+    paddingVertical: 15,
+    // shadowOpacity: 5,
+    backgroundColor: "#E2F2CD",
+    borderColor: "#828C61",
+    borderWidth: 0.5
+  },
+
+  titleInLogin : {
+    fontSize: 16, fontWeight: "500", color: "#828C61", textTransform:"uppercase" 
+  },
+
+  optionInProfile: {
+    color: "#828C61", fontWeight: "400", fontSize: 14, textTransform: "uppercase", margin:10
+  }
 });

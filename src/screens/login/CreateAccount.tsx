@@ -91,7 +91,7 @@ const CreateAccount: React.FC = () => {
       </View>
  
         <View>
-          <Text style={{ fontSize: 20, fontWeight: "300", color:"#343434" }}>Skappa ett nytt konto i Enoki</Text>
+          <Text style={globalStyles.titleInLogin}>Skapa konto i Enoki</Text>
         </View>
 
         {/* ----------------- Name Input ---------------- */}
@@ -161,8 +161,8 @@ const CreateAccount: React.FC = () => {
         {/* ----------------- Create/Register a new user ---------------- */}
 
 
-        <Pressable style={globalStyles.buttonNewFoto} onPress={handleRegister}>
-          <Text style={{color: "#343434", fontWeight: "700", fontSize: 12, textTransform: "uppercase"}}>Skapa konto</Text>
+        <Pressable style={globalStyles.buttonLogin} onPress={handleRegister}>
+          <Text style={globalStyles.textButtonLogin}>Skapa konto</Text>
         </Pressable>
 
         {/* <View style={{  justifyContent: "center", alignItems: "center"}}> */}

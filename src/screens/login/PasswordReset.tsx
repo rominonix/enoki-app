@@ -62,12 +62,12 @@ const ResetPassword: React.FC = () => {
       </View>
 
       <Pressable
-      style={globalStyles.buttonNewFoto}
+      style={globalStyles.buttonLogin}
          onPress={() => {
             controllEmail(), sendEmail();
           }}
         >
-          <Text style={globalStyles.textButton}> skicka e-post </Text>
+          <Text style={globalStyles.textButtonLogin}> skicka e-post </Text>
         </Pressable>
       {/* <Button
         text="skicka email"

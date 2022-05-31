@@ -54,8 +54,8 @@ const Login: React.FC = () => {
       >
         <Text style={{ fontSize: 70 }}>🍄</Text>
       </View>
-      <Text style={{ fontSize: 20, fontWeight: "300", color: "#343434" }}>
-        Välkommen till Enoki! 🤓{" "}
+      <Text style={{ fontSize: 16, fontWeight: "500", color: "#828C61", textTransform:"uppercase" }}>
+        Välkommen till Enoki 🤓{" "}
       </Text>
       {/* <Text style={{ fontSize: 15, marginTop: 8, color:"#343434", fontWeight: "300" }}>
         Din app för att gå till skogen 🌲
@@ -91,7 +91,7 @@ const Login: React.FC = () => {
         <Pressable onPress={handleResetPassword}>
           <Text
             style={{
-              color: "#343434",
+              color: "#828C61",
               fontWeight: "600",
               fontSize: 10,
               textTransform: "uppercase",
@@ -101,14 +101,9 @@ const Login: React.FC = () => {
           </Text>
         </Pressable>
       </View>
-      <TouchableOpacity style={globalStyle.buttonNewFoto} onPress={handleLogin}>
+      <TouchableOpacity style={globalStyle.buttonLogin} onPress={handleLogin}>
         <Text
-          style={{
-            color: "#343434",
-            fontWeight: "700",
-            fontSize: 12,
-            textTransform: "uppercase",
-          }}
+          style={globalStyle.textButtonLogin}
         >
           Logga in
         </Text>
@@ -120,21 +115,12 @@ const Login: React.FC = () => {
         <View style={globalStyle.line} />
       </View>
 
-      <Pressable
-        style={globalStyle.buttonNewFoto}
+      <TouchableOpacity
+        style={globalStyle.buttonLogin}
         onPress={handleCreateAccount}
       >
-        <Text
-          style={{
-            color: "#343434",
-            fontWeight: "700",
-            fontSize: 12,
-            textTransform: "uppercase",
-          }}
-        >
-          Skapa konto
-        </Text>
-      </Pressable>
+        <Text style={globalStyle.textButtonLogin}>Skapa konto</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };

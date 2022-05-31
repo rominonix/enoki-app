@@ -2,20 +2,9 @@ import React, { useContext, useEffect } from "react";
 import { Text, View, Pressable } from "react-native";
 import globalStyles from "../../styles/styles";
 import { UserContext } from "../../contexts/UserContext";
-import { useNavigation } from "@react-navigation/native";
-// import AsyncStorage from "@react-native-async-storage/async-storage";
 import { TouchableOpacity } from "react-native-gesture-handler";
-// import { Password } from "../../components/Icons";
 import globalStyle from "../../styles/styles";
-import MenuItem from "./components/MenuItem";
-import styles from "./styles"
-import {
-  HomeIcon,
-  AlbumIcon,
-  QuizIcon,
-  CameraIcon,
-  ProfileIcon,
-} from "../../components/Icons";
+
 
 const Profile: React.FC = () => {
   const { logout, user } = useContext(UserContext)!;
@@ -35,30 +24,49 @@ const Profile: React.FC = () => {
   return (
     <>
       <View style={[globalStyles.container]}>
+        <Text style={globalStyle.generalTitle}> din profil 🤓 </Text>
 
-        <Text> Hej {user?.name} </Text>
-        <View style={{backgroundColor: "white", width: 100, height: 100, borderRadius: 100, marginVertical:20, justifyContent:"center", alignItems: "center" }}>
-      <HomeIcon size={50} color={"violet"}/>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignContent: "center",
+            alignItems: "center",
+            width: 180,
+          }}
+        >
+          <Text style={globalStyle.homeSubtitle}> Hej {user?.name}! </Text>
+          <View
+            style={{
+              backgroundColor: "white",
+              width: 80,
+              height: 80,
+              borderRadius: 100,
+              marginVertical: 20,
+              justifyContent: "center",
+              alignItems: "center",
+              borderColor: "#828C61",
+              borderWidth: 0.5,
+            }}
+          >
+            <Text style={{ fontSize: 40 }}>🍄</Text>
+          </View>
+
+          {/* <HomeIcon size={50} color={"violet"}/> */}
         </View>
-        <MenuItem
-          text="Ändra lösenord"
-          iconSource={0}
-          iconStyle={styles.passwordIcon}
-          onPress={function (): void {
-            throw new Error("Function not implemented.");
-          }}
-        />
-         {/* <MenuItem
-          text="Hjälp"
-          iconSource={0}
-          iconStyle={styles.passwordIcon}
-          onPress={function (): void {
-            throw new Error("Function not implemented.");
-          }}
-        /> */}
-      
-        <TouchableOpacity onPress={handleLogout} style={globalStyle.button}>
-          <Text style={{ textAlign: "center" }}>Logout</Text>
+        <View style={{ marginBottom: 30 }}>
+          <Text style={globalStyle.optionInProfile}>💪 Mina poäng</Text>
+          <Text style={globalStyle.optionInProfile}>😍 Mina svampar</Text>
+          <Text style={globalStyle.optionInProfile}>🤯 Ändra lösenord</Text>
+          <Text style={globalStyle.optionInProfile}>😢 avsluta konto</Text>
+          <Text style={globalStyle.optionInProfile}>🤔 Hjälp</Text>
+        </View>
+
+        <TouchableOpacity
+          onPress={handleLogout}
+          style={globalStyle.buttonLogin}
+        >
+          <Text style={globalStyle.textButtonLogin}>Logout</Text>
         </TouchableOpacity>
       </View>
     </>
